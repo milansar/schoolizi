@@ -1,6 +1,10 @@
 import { NgModule } from "@angular/core";
 import { FormsModule } from "@angular/forms";
+import {MatButtonModule, MatCheckboxModule} from "@angular/material";
+import {MatCardModule} from "@angular/material/card";
+import {MatInputModule} from "@angular/material/input";
 import { BrowserModule } from "@angular/platform-browser";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {AngularFireModule} from "angularfire2";
 import {AngularFireAuthModule} from "angularfire2/auth";
 import { AngularFirestoreModule } from "angularfire2/firestore";
@@ -28,12 +32,17 @@ import { SignupComponent } from "./signup/signup.component";
     HomeComponent,
   ],
   imports: [
+    BrowserAnimationsModule,
     BrowserModule,
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
     AngularFirestoreModule,
     FormsModule,
+    MatButtonModule,
+    MatCheckboxModule,
+    MatCardModule,
+    MatInputModule,
   ],
   providers: [AuthService, AuthguardService],
 
