@@ -1,0 +1,82 @@
+.main-image {
+    background-image: url('/assets/image/back-log.jpg');
+    height: 100%;
+    width: 100%;
+    position: absolute;
+}
+
+.login-card {
+    background-color: #ffffff;
+    width: 25%;
+    height: 80%;
+    margin: 0px auto;
+    border-radius: 15px;
+}
+
+.login-shadow {
+    -webkit-box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.6);
+    -moz-box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.6);
+    box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.6);
+}
+
+.login-content {
+    margin: 0px auto;
+    padding: 85px;
+}
+
+.login-inner {
+    line-height: 2em;
+    margin-top: 35px;
+}
+
+.login-inner-sec {
+    line-height: 2em;
+    margin-top: 20px;
+}
+
+.login-label {
+    font-weight: bold;
+}
+
+.login-head {
+    text-align: center;
+    font-family: 'Nunito', sans-serif;
+}
+
+.login-input {
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid #a9a9a9;
+    padding: 10px;
+}
+
+.login-button {
+    width: 100%;
+    background: linear-gradient(to right, #4c4895, #e1a080);
+    border: none;
+    height: 40px;
+    border-radius: 25px;
+    color: white;
+    font-size: 17px;
+    font-weight: bold;
+}
+
+.login-button-section {
+    margin: 40px auto;
+    width: 100%;
+    text-align: center;
+}
+
+.login-google {
+    margin-top: 20px;
+    line-height: 3em;
+}
+
+.google-icon {
+    width: 50px;
+    height: 50px;
+}
+
+.font {
+    font-family: 'Nunito', sans-serif;
+}

@@ -1,0 +1,10 @@
+<app-main-header></app-main-header>
+<input type="text" [(ngModel)]="title" name="title" placeholder="Title..">
+<textarea [(ngModel)]="content" name="content" placeholder="Content.."></textarea>
+<input type="submit" value="Add a Post" (click)="addPost()">
+<ul>
+    <li *ngFor="let item of items | async">
+        {{ posts.title }}
+    </li>
+</ul>
+<img src="/assets/image/school.png">

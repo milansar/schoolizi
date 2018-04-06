@@ -1,0 +1,26 @@
+<div class="main-image">
+    <app-header></app-header>
+    <!-- <h1 *ngIf="authService.user | async">Welcome {{ (authService.user | async)?.email }}!</h1> -->
+    <div class="login-card login-shadow">
+        <div class="login-content">
+            <h1 class="login-head">Login</h1>
+            <div>
+                <div class="login-inner">
+                    <label class="font login-label">Email</label><br>
+                    <input type="text" [(ngModel)]="email" placeholder="Type your username" class="login-input font"><br>
+                </div>
+                <div class="login-inner-sec">
+                    <label class="font login-label">Password</label><br>
+                    <input type="password" [(ngModel)]="password" placeholder="Type your password" class="login-input font"><br>
+                </div>
+            </div>
+            <div class="login-button-section">
+                <button (click)="login();error()" [disabled]="!email || !password" class="login-button font">Login</button>
+                <div class="login-google">
+                    <h5 class="font">Or Sign In Using</h5>
+                    <img src="/assets/image/search.png" (click)="logingoogle()" class="google-icon">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

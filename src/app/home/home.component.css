@@ -1,0 +1,6 @@
+.main-image {
+    background-image: url('/assets/image/back-log.jpg');
+    height: 100%;
+    width: 100%;
+    position: absolute;
+}

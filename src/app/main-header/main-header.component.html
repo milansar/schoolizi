@@ -1,0 +1,5 @@
+<div class="menu-back-color">
+    <div class="menu-asset">
+        <div (click)="logout()" *ngIf="authService.user | async">Logout</div>
+    </div>
+</div>
