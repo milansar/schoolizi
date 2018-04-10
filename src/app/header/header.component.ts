@@ -3,12 +3,10 @@ import { RouterModule, Routes } from "@angular/router";
 import { LoginComponent } from "../login/login.component";
 
 @Component({
-  selector: "app-header",
-  templateUrl: "./header.component.html",
-  // tslint:disable-next-line:object-literal-sort-keys
-  styleUrls: ["./header.component.css"],
   encapsulation: ViewEncapsulation.None,
-
+  selector: "app-header",
+  styleUrls: ["./header.component.css"],
+  templateUrl: "./header.component.html",
 })
 export class HeaderComponent {
 

@@ -1,0 +1,11 @@
+
+<p>
+  upload-image works!
+</p>
+<label for="file">File:</label>
+<input type="file" (change)="uploadFile($event)" accept=".png,.jpg" />
+<br>
+<progress max="100" [value]="(uploadProgress | async)"></progress>
+<div class="result" *ngIf="uploadURL | async; let uploadSrc">
+  <a [href]="uploadSrc">You just uploaded this file!</a>
+</div>

@@ -8,6 +8,7 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {AngularFireModule} from "angularfire2";
 import {AngularFireAuthModule} from "angularfire2/auth";
 import { AngularFirestoreModule } from "angularfire2/firestore";
+import { AngularFireStorageModule } from "angularfire2/storage";
 import {environment} from "../environments/environment";
 import { AppRoutingModule } from ".//app-routing.module";
 import { AppComponent } from "./app.component";
@@ -19,6 +20,7 @@ import { LoginComponent } from "./login/login.component";
 import { MainHeaderComponent } from "./main-header/main-header.component";
 import { SchoolprofileComponent } from "./schoolprofile/schoolprofile.component";
 import { SignupComponent } from "./signup/signup.component";
+import { UploadImageComponent } from "./upload-image/upload-image.component";
 
 @NgModule({
   bootstrap: [AppComponent],
@@ -29,8 +31,8 @@ import { SignupComponent } from "./signup/signup.component";
     SchoolprofileComponent,
     SignupComponent,
     MainHeaderComponent,
-    HomeComponent,
-  ],
+    HomeComponent, UploadImageComponent,
+    ],
   imports: [
     BrowserAnimationsModule,
     BrowserModule,
@@ -38,6 +40,7 @@ import { SignupComponent } from "./signup/signup.component";
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
     AngularFirestoreModule,
+    AngularFireStorageModule,
     FormsModule,
     MatButtonModule,
     MatCheckboxModule,
