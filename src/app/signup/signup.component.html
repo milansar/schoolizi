@@ -2,8 +2,8 @@
     <app-header></app-header>
     <div class="signup-card signup-shadow">
         <div class="signup-content">
-            <h1 class="signup-head">Signup</h1>
-            <div *ngIf="!(authService.user | async)">
+            <h1 class="signup-head">Sign Up</h1>
+            <!-- <div *ngIf="!(authService.user | async)"> -->
                 <div class="signup-inner">
                     <label class="font signup-label">Email</label>
                     <input type="text" [(ngModel)]="email" placeholder="Type your username" class="signup-input">
@@ -15,7 +15,8 @@
                 <div class="signup-button-section">
                     <button (click)="signup()" [disabled]="!email || !password" class="signup-button">Signup</button>
                 </div>
-            </div>
+            <!-- </div> -->
         </div>
     </div>
 </div>
+

@@ -2,11 +2,14 @@ import { NgModule } from "@angular/core";
 import { FormsModule } from "@angular/forms";
 import {MatButtonModule, MatCheckboxModule} from "@angular/material";
 import {MatCardModule} from "@angular/material/card";
+import { MatDividerModule } from "@angular/material/divider";
+import { MatFormFieldModule } from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
 import { BrowserModule } from "@angular/platform-browser";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {AngularFireModule} from "angularfire2";
 import {AngularFireAuthModule} from "angularfire2/auth";
+import { AngularFireDatabase } from "angularfire2/database";
 import { AngularFirestoreModule } from "angularfire2/firestore";
 import { AngularFireStorageModule } from "angularfire2/storage";
 import {environment} from "../environments/environment";
@@ -18,9 +21,13 @@ import { HeaderComponent } from "./header/header.component";
 import { HomeComponent } from "./home/home.component";
 import { LoginComponent } from "./login/login.component";
 import { MainHeaderComponent } from "./main-header/main-header.component";
+import { SchoolSearchComponent } from "./school-search/school-search.component";
 import { SchoolprofileComponent } from "./schoolprofile/schoolprofile.component";
 import { SignupComponent } from "./signup/signup.component";
+import { DetailsUploadComponent } from "./upload-image/detailsupload/detailsupload.component";
+import { ListUploadComponent } from "./upload-image/list-upload/list-upload.component";
 import { UploadImageComponent } from "./upload-image/upload-image.component";
+import { UploadImageService } from "./upload-image/uploadimage.service";
 
 @NgModule({
   bootstrap: [AppComponent],
@@ -31,7 +38,7 @@ import { UploadImageComponent } from "./upload-image/upload-image.component";
     SchoolprofileComponent,
     SignupComponent,
     MainHeaderComponent,
-    HomeComponent, UploadImageComponent,
+    HomeComponent, UploadImageComponent, SchoolSearchComponent, ListUploadComponent, DetailsUploadComponent,
     ],
   imports: [
     BrowserAnimationsModule,
@@ -47,7 +54,7 @@ import { UploadImageComponent } from "./upload-image/upload-image.component";
     MatCardModule,
     MatInputModule,
   ],
-  providers: [AuthService, AuthguardService],
+  providers: [AuthService, AuthguardService, UploadImageService, AngularFireDatabase],
 
 })
 export class AppModule { }
