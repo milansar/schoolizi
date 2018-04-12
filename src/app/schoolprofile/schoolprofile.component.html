@@ -1,4 +1,11 @@
 <app-main-header></app-main-header>
+
+    <div *ngIf="authservice.user | async as user">
+        <h3>Howdy, {{ user.displayName }}</h3>
+        <p>UID: {{ user.uid }}</p>
+    </div>
+
+
 Enter Title: <input type="text" [(ngModel)]="title" name="title" placeholder="Title..">
 <br>
 Enter Content: <textarea [(ngModel)]="content" name="content" placeholder="Content.."></textarea>
@@ -19,4 +26,4 @@ Enter Content: <textarea [(ngModel)]="content" name="content" placeholder="Conte
 </mat-card>
     <app-upload-image></app-upload-image>
     <list-upload></list-upload>
-<!-- <img src="/assets/image/school.png"> -->
+ <!-- <img src="/assets/image/school.png">  -->

@@ -14,7 +14,29 @@ import {AuthService} from "../auth.service";
 export class LoginComponent {
  email: string;
  password: string;
+  errorMessage = "";
   constructor(public authService: AuthService , public au: AngularFireAuth, public router: Router) {}
+
+  // validateForm(email: string, password: string): boolean {
+  //   if (email.length === 0) {
+  //     this.errorMessage = "Please enter Email!";
+  //     return false;
+  //   }
+
+  //   if (password.length === 0) {
+  //     this.errorMessage = "Please enter Password!";
+  //     return false;
+  //   }
+
+  //   if (password.length < 6) {
+  //     this.errorMessage = "Password should be at least 6 characters!";
+  //     return false;
+  //   }
+
+  //   this.errorMessage = "";
+
+  //   return true;
+  // }
 
   login() {
     this.authService.login(this.email, this.password).then( (res) => {
