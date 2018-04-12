@@ -21,6 +21,7 @@ isAuthenticated() {
     if (uid) {
         return true;
     }
+    console.log("Hello");
     return false;
     }
 
