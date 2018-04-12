@@ -1,2 +1,8 @@
 <button (click)='deleteFileUpload(fileUpload)' class="btn btn-danger btn-xs" style="float: right">Delete</button>
 <img src="{{fileUpload.url}}" alt="{{fileUpload.name}}" style="max-width:350px" />
+
+<ul>
+  <li *ngFor="let school of schools | async">
+    <pre>{{ item | json }}</pre>
+  </li>
+</ul>
