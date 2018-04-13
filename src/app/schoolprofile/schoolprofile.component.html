@@ -1,29 +1,27 @@
 <app-main-header></app-main-header>
+<div [ngSwitch]="mode">
+    <div *ngSwitchCase="1">
+        <mat-card class="card-size">
+            <form class="example-container">
+                <mat-form-field class="example-full-width">
+                    <input [(ngModel)]="title" name="title" matInput placeholder="Name">
+                </mat-form-field>
 
-    <div *ngIf="authservice.user | async as user">
-        <h3>Howdy, {{ user.displayName }}</h3>
-        <p>UID: {{ user.uid }}</p>
+                <mat-form-field>
+                    <textarea [(ngModel)]="content" name="content" matInput placeholder="About you"></textarea>
+                </mat-form-field>
+
+                <button (click)="addPost()" class="example-button-row" mat-raised-button>Save</button>
+            </form>
+        </mat-card>
     </div>
-
-
-Enter Title: <input type="text" [(ngModel)]="title" name="title" placeholder="Title..">
-<br>
-Enter Content: <textarea [(ngModel)]="content" name="content" placeholder="Content.."></textarea>
-<br>
-<button mat-raised-button color class="button-row" type="submit" value="Add a Post" (click)="addPost()">Add a Post</button>
-<ul *ngFor="let post of posts | async">
-    <li>
-        {{ post.title }} {{post.content}}
-    </li>
-</ul>
-<mat-card>
-    <form class="example-form">
-        <mat-form-field class="example-full-width">
-            <input matInput placeholder="Favorite food">
-        </mat-form-field>
-    </form>
-
-</mat-card>
-    <app-upload-image></app-upload-image>
-    <list-upload></list-upload>
- <!-- <img src="/assets/image/school.png">  -->
+    <div *ngSwitchDefault>
+        <ul *ngFor="let post of posts | async">
+            <li>
+                {{ post.title }} {{post.content}}
+            </li>
+        </ul>
+    </div>
+    <button (click)="swichmode()" class="example-button-row" mat-raised-button>edit</button>
+</div>
+<!-- <img src="/assets/image/school.png"> -->
