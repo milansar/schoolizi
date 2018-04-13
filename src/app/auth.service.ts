@@ -18,20 +18,15 @@ user: Observable<User>; // firebase.User
 errorch: any;
 
   constructor(private firebaseAuth: AngularFireAuth, private afs: AngularFirestore, private router: Router) {
-    this.user = firebaseAuth.authState
-      .switchMap((user) => {
-        if (user) {
-          return this.afs.doc<User>(`users/${user.uid}`).valueChanges();
-        } else {
-          return Observable.of(null);
-        }
-      });
   }
 
     signup(email: string, password: string) {
     return this.firebaseAuth.auth.createUserWithEmailAndPassword(email, password)
       .then((value) => {
         console.log("Success!", value);
+        console.log(value.uid);
+        this.afs.collection("posts").doc(value.uid).set({name:"raj"});
+        // .set({id:value.uid})
         return value;
       })
       .catch((err) => {

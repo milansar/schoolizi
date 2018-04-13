@@ -17,27 +17,6 @@ export class LoginComponent {
   errorMessage = "";
   constructor(public authService: AuthService , public au: AngularFireAuth, public router: Router) {}
 
-  // validateForm(email: string, password: string): boolean {
-  //   if (email.length === 0) {
-  //     this.errorMessage = "Please enter Email!";
-  //     return false;
-  //   }
-
-  //   if (password.length === 0) {
-  //     this.errorMessage = "Please enter Password!";
-  //     return false;
-  //   }
-
-  //   if (password.length < 6) {
-  //     this.errorMessage = "Password should be at least 6 characters!";
-  //     return false;
-  //   }
-
-  //   this.errorMessage = "";
-
-  //   return true;
-  // }
-
   login() {
     this.authService.login(this.email, this.password).then( (res) => {
       if (res.uid) {
@@ -62,7 +41,6 @@ logingoogle() {
         console.log("Something went wrong:", err.message);
         return err.message;
       });
-        // this.router.navigate(['profile']);
   }
  error() {
     const x = this.authService.errorch;
