@@ -11,7 +11,15 @@ import {AuthService} from "../auth.service";
   styleUrls: ["./login.component.css"],
   templateUrl: "./login.component.html",
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
+  ngOnInit(){
+    var user= firebase.auth().currentUser;
+    if(user){
+      console.log("user is login");
+    }else{
+      console.log("user is not login");
+    }
+  }
  email: string;
  password: string;
   errorMessage = "";
@@ -44,5 +52,8 @@ logingoogle() {
   }
  error() {
     const x = this.authService.errorch;
+  }
+  usercheck(){
+   
   }
 }
