@@ -1,27 +1,25 @@
+import { CanActivate, Router } from '@angular/router';
+import { AngularFireAuth } from "angularfire2/auth";
 import { Injectable } from "@angular/core";
-import { ActivatedRouteSnapshot, CanActivate, CanDeactivate, Router, RouterStateSnapshot } from "@angular/router";
-import { Observable } from "rxjs/Observable";
-import { AuthService } from "./auth.service";
+import { Observable } from "rxjs/Rx";
+import 'rxjs/add/operator/do';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/take';
 
 @Injectable()
-export class AuthguardService implements CanActivate  {
+export class AuthGuard implements CanActivate {
 
-    constructor(private authService: AuthService, private router: Router) { }
+    constructor(private auth: AngularFireAuth, private router: Router) {}
 
-canActivate() {
-        if (this.isAuthenticated()) {
-            return true;
-        }
-        this.router.navigate(["login"]);
-        return false;
+    canActivate(): Observable<boolean> {
+      console.log(this.auth.authState);
+      return Observable.from(this.auth.authState)
+        .take(1)
+        .map(state => !!state)
+        .do(authenticated => {
+      if 
+        (!authenticated) this.router.navigate([ '/login' ]);
+      })
     }
-
-isAuthenticated() {
-    const uid = localStorage.getItem("value");
-    if (uid) {
-        return true;
-    }
-    return false;
-    }
-
-    }
+ 
+}

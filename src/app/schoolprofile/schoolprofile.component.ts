@@ -3,6 +3,7 @@ import { AngularFirestore, AngularFirestoreCollection } from "angularfire2/fires
 import { Observable } from "rxjs/Observable";
 import { merge } from "rxjs/observable/merge";
 import * as firebase from "firebase/app";
+import { AngularFireModule } from "angularfire2";
 
 interface Post {
   title: string;
@@ -20,14 +21,21 @@ export class SchoolprofileComponent implements OnInit {
   postsCol: AngularFirestoreCollection<Post>;
   posts: Observable<Post[]>;
   mode = 0;
-
-  constructor(private afs: AngularFirestore) {
-
+  
+  constructor(private afs: AngularFirestore) {  
   }
+  // this.postsCol.valueChanges();
   ngOnInit() {
     this.postsCol = this.afs.collection("posts");
-    this.posts = this.postsCol.valueChanges();
+    this.posts = this.postsCol.snapshotChanges().map(action=>{
+      return action.map(a => {
+        const data = a.payload.doc.data() as Post;
+        const id = a.payload.doc.id;
+        return { id, ...data };
+    });
+  });
     var user= firebase.auth().currentUser;
+    console.log(this.posts);
     if(user){
       console.log("user is login");
     }else{
