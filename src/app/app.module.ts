@@ -24,10 +24,13 @@ import { MainHeaderComponent } from "./main-header/main-header.component";
 import { SchoolSearchComponent } from "./school-search/school-search.component";
 import { SchoolprofileComponent } from "./schoolprofile/schoolprofile.component";
 import { SignupComponent } from "./signup/signup.component";
-import { DetailsUploadComponent } from "./upload-image/detailsupload/detailsupload.component";
-import { ListUploadComponent } from "./upload-image/list-upload/list-upload.component";
-import { UploadImageComponent } from "./upload-image/upload-image.component";
-import { UploadImageService } from "./upload-image/uploadimage.service";
+import { CoredatabaseService } from "./coredatabase.service";
+import { DetailsUploadComponent } from './Image/details-upload/details-upload.component';
+import { FormUploadComponent } from './Image/form-upload/form-upload.component';
+import { ListUploadComponent } from './Image/list-upload/list-upload.component';
+import { UploadFileService } from './Image/upload-file.service';
+
+
 
 @NgModule({
   bootstrap: [AppComponent],
@@ -38,7 +41,7 @@ import { UploadImageService } from "./upload-image/uploadimage.service";
     SchoolprofileComponent,
     SignupComponent,
     MainHeaderComponent,
-    HomeComponent, UploadImageComponent, SchoolSearchComponent, ListUploadComponent, DetailsUploadComponent,
+    HomeComponent, SchoolSearchComponent, DetailsUploadComponent, FormUploadComponent, ListUploadComponent,
     ],
   imports: [
     BrowserAnimationsModule,
@@ -54,7 +57,7 @@ import { UploadImageService } from "./upload-image/uploadimage.service";
     MatCardModule,
     MatInputModule,
   ],
-  providers: [AuthService, AuthGuard, UploadImageService, AngularFireDatabase],
+  providers: [AuthService, AuthGuard, AngularFireDatabase,CoredatabaseService,UploadFileService],
 
 })
 export class AppModule { }

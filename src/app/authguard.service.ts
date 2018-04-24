@@ -12,7 +12,7 @@ export class AuthGuard implements CanActivate {
     constructor(private auth: AngularFireAuth, private router: Router) {}
 
     canActivate(): Observable<boolean> {
-      console.log(this.auth.authState);
+      // console.log(this.auth.authState);
       return Observable.from(this.auth.authState)
         .take(1)
         .map(state => !!state)

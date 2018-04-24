@@ -25,7 +25,7 @@ errorch: any;
       .then((value) => {
         console.log("Success!", value);
         console.log(value.uid);
-        this.afs.collection("posts").doc(value.uid).set({name:"raj"});
+        this.afs.collection("posts").doc(value.uid).set({id:value.uid});
         // .set({id:value.uid})
         return value;
       })

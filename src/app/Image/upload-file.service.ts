@@ -1,13 +1,15 @@
-import { Injectable } from "@angular/core";
-import { AngularFireDatabase, AngularFireList } from "angularfire2/database";
-import * as firebase from "firebase";
+import { Injectable } from '@angular/core';
+import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
+import * as firebase from 'firebase';
 
-import { FileUpload } from "./file-upload";
+import { FileUpload } from './fileupload';
+import { Observable } from 'rxjs/Observable';
+
 
 @Injectable()
-export class UploadImageService {
+export class UploadFileService {
 
-  private basePath = "/uploads";
+  private basePath = '/uploads';
 
   constructor(private db: AngularFireDatabase) { }
 
@@ -30,7 +32,7 @@ export class UploadImageService {
         fileUpload.url = uploadTask.snapshot.downloadURL;
         fileUpload.name = fileUpload.file.name;
         this.saveFileData(fileUpload);
-      },
+      }
     );
   }
 
@@ -38,19 +40,17 @@ export class UploadImageService {
     this.db.list(`${this.basePath}/`).push(fileUpload);
   }
 
-  // tslint:disable-next-line:member-ordering
   getFileUploads(numberItems): AngularFireList<FileUpload> {
-    return this.db.list(this.basePath, (ref) =>
+    return this.db.list(this.basePath, ref =>
       ref.limitToLast(numberItems));
   }
 
-  // tslint:disable-next-line:member-ordering
   deleteFileUpload(fileUpload: FileUpload) {
     this.deleteFileDatabase(fileUpload.key)
       .then(() => {
         this.deleteFileStorage(fileUpload.name);
       })
-      .catch((error) => console.log(error));
+      .catch(error => console.log(error));
   }
 
   private deleteFileDatabase(key: string) {

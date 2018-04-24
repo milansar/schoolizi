@@ -1,8 +1,8 @@
 <div class="panel panel-primary">
-    <div class="panel-heading">Top 5 Schools</div>
+    <div class="panel-heading">List of Images</div>
     <div *ngFor="let file of fileUploads">
         <div class="panel-body">
-            <detailsupload [fileUpload]='file'></detailsupload>
+            <app-details-upload [fileUpload]='file'></app-details-upload>
         </div>
     </div>
 </div>
