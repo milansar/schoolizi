@@ -26,7 +26,6 @@ import { SchoolprofileComponent } from "./schoolprofile/schoolprofile.component"
 import { SignupComponent } from "./signup/signup.component";
 import { CoredatabaseService } from "./coredatabase.service";
 import { DetailsUploadComponent } from './Image/details-upload/details-upload.component';
-import { FormUploadComponent } from './Image/form-upload/form-upload.component';
 import { ListUploadComponent } from './Image/list-upload/list-upload.component';
 import { UploadFileService } from './Image/upload-file.service';
 
@@ -41,7 +40,7 @@ import { UploadFileService } from './Image/upload-file.service';
     SchoolprofileComponent,
     SignupComponent,
     MainHeaderComponent,
-    HomeComponent, SchoolSearchComponent, DetailsUploadComponent, FormUploadComponent, ListUploadComponent,
+    HomeComponent, SchoolSearchComponent, DetailsUploadComponent, ListUploadComponent,
     ],
   imports: [
     BrowserAnimationsModule,

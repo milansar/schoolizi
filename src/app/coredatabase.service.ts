@@ -5,7 +5,7 @@ import { Observable } from "rxjs/Observable";
 import { merge } from "rxjs/observable/merge";
 import * as firebase from "firebase/app";
 import { AngularFireModule } from "angularfire2";
-import {Post} from "./data";
+import { Post } from "./data";
 
 @Injectable()
 
@@ -21,12 +21,13 @@ export class CoredatabaseService implements OnInit {
   ngOnInit() {
   }
 
-  addPost(content:string,title:string) {
-    return this.afs.collection("posts").doc(this.user.uid).update({ title: title, content: content })
-    .then((value) => {
-       this.mode = 0;
-       return value;
-    })
+  addPost(content: string, title: string, imageList) {
+    console.log('imageList:::', imageList);
+    return this.afs.collection("posts").doc(this.user.uid).update({ title: title, content: content, url: imageList })
+      .then((value) => {
+        this.mode = 0;
+        return value;
+      })
     // this.afs.collection("posts").doc('a').set({});
     // .add({ title: this.title, content: this.content })
   }
