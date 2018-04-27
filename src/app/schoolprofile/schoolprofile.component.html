@@ -29,7 +29,11 @@
                 {{ singlepost.title }} {{singlepost.content}}
             </li>
         </ul>
-        <app-list-upload></app-list-upload>
+        <div *ngFor="let row of imageFinal">
+            <img style="max-width:350px" src="{{row|async}}">
+            <!-- <img style="max-width:350px" [src]="imageshow | async" /> -->
+            <button (click)='deleteFileUpload(fileUpload)' class="btn btn-danger btn-xs" style="float: right">Delete</button>
+        </div>
     </div>
     <button (click)="switchmode()" class="example-button-row" mat-raised-button>edit</button>
 </div>

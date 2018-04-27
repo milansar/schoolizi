@@ -25,25 +25,28 @@ export class UploadFileService {
   pushFileToStorage(fileUpload: FileUpload, progress: { percentage: number }) {
     const storageRef = firebase.storage().ref();
     const uploadTask = storageRef.child(`${this.basePath}/${fileUpload.file.name}`).put(fileUpload.file);
-    uploadTask.on(firebase.storage.TaskEvent.STATE_CHANGED,
-      (snapshot) => {
-        // in progress
-        const snap = snapshot as firebase.storage.UploadTaskSnapshot;
-        progress.percentage = Math.round((snap.bytesTransferred / snap.totalBytes) * 100);
-      },
-      (error) => {
-        // fail
-        console.log(error);
-      },
-      () => {
-        // success
-        fileUpload.url = uploadTask.snapshot.downloadURL;
-        fileUpload.name = fileUpload.file.name;
-        
-      }
-    );
-    console.log(fileUpload)
-    return Observable.of(uploadTask.snapshot.downloadURL) ;
+    console.log(uploadTask);
+    // return uploadTask.then(uploadFileRes => uploadFileRes.metadata.downloadURLs);
+      uploadTask.on(firebase.storage.TaskEvent.STATE_CHANGED,
+       (snapshot) => {
+         // in progress
+         const snap = snapshot as firebase.storage.UploadTaskSnapshot;
+         progress.percentage = Math.round((snap.bytesTransferred / snap.totalBytes) * 100);
+       },
+       (error) => {
+         // fail
+         console.log(error);
+       },
+       () => {
+         // success
+         fileUpload.url = uploadTask.snapshot.downloadURL;
+         fileUpload.name = fileUpload.file.name;
+       }
+     );
+     fileUpload.name = fileUpload.file.name;
+     console.log("file",fileUpload.file.name)
+     console.log("var",fileUpload.name)
+     return uploadTask.then(uploadFileRes=>fileUpload.name); 
   }
 
   private saveFileData(fileUpload: FileUpload) {
@@ -52,7 +55,7 @@ export class UploadFileService {
     var image = [];
     image.push(fileUpload.url);
     this.afs.collection("posts").doc(this.user.uid).update({ url: fileUpload.url });
-    console.log(image);
+    // console.log(image);
 
   }
 

@@ -16,7 +16,7 @@ export class DetailsUploadComponent implements OnInit {
   ngOnInit() {
   }
 
-  deleteFileUpload(fileUpload) {
-    this.uploadService.deleteFileUpload(fileUpload);
-  }
+  // deleteFileUpload(fileUpload) {
+  //   this.uploadService.deleteFileUpload(fileUpload);
+  // }
 }

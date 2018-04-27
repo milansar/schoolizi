@@ -23,7 +23,7 @@ export class CoredatabaseService implements OnInit {
 
   addPost(content: string, title: string, imageList) {
     console.log('imageList:::', imageList);
-    return this.afs.collection("posts").doc(this.user.uid).update({ title: title, content: content, url: imageList })
+    return this.afs.collection("posts").doc(this.user.uid).set({ title: title, content: content, url: imageList })
       .then((value) => {
         this.mode = 0;
         return value;
