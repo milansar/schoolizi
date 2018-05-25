@@ -29,12 +29,12 @@
                 {{ singlepost.title }} {{singlepost.content}}
             </li>
         </ul>
-        <div *ngFor="let row of imageFinal">
-            <img style="max-width:350px" src="{{row|async}}">
-            <!-- <img style="max-width:350px" [src]="imageshow | async" /> -->
-            <button (click)='deleteFileUpload(fileUpload)' class="btn btn-danger btn-xs" style="float: right">Delete</button>
+
+        <div *ngFor="let singlepost of images | async">
+            <img style="max-width:350px" src="{{singlepost.url|async}}">
+
+            <button (click)='deleteFileUpload(singlepost)' class="btn btn-danger btn-xs" style="float: right">Delete</button>
         </div>
     </div>
     <button (click)="switchmode()" class="example-button-row" mat-raised-button>edit</button>
 </div>
-<!-- <img src="/assets/image/school.png"> -->

@@ -19,13 +19,13 @@ export class UploadFileService {
   user = firebase.auth().currentUser;
   postsCol: AngularFirestoreCollection<Post>;
   posts: Observable<Post[]>;
+  currentFileUpload: FileUpload;
 
   constructor(private db: AngularFireDatabase, private afs: AngularFirestore) { }
 
   pushFileToStorage(fileUpload: FileUpload, progress: { percentage: number }) {
     const storageRef = firebase.storage().ref();
     const uploadTask = storageRef.child(`${this.basePath}/${fileUpload.file.name}`).put(fileUpload.file);
-    console.log(uploadTask);
     // return uploadTask.then(uploadFileRes => uploadFileRes.metadata.downloadURLs);
       uploadTask.on(firebase.storage.TaskEvent.STATE_CHANGED,
        (snapshot) => {
@@ -44,40 +44,16 @@ export class UploadFileService {
        }
      );
      fileUpload.name = fileUpload.file.name;
-     console.log("file",fileUpload.file.name)
-     console.log("var",fileUpload.name)
      return uploadTask.then(uploadFileRes=>fileUpload.name); 
   }
 
-  private saveFileData(fileUpload: FileUpload) {
-    this.db.list(`${this.basePath}/`).push(fileUpload);
 
-    var image = [];
-    image.push(fileUpload.url);
-    this.afs.collection("posts").doc(this.user.uid).update({ url: fileUpload.url });
-    // console.log(image);
-
+   deleteFileDatabase(singlepost) {
+    this.afs.collection("posts").doc(this.user.uid).collection("imagebox").doc(singlepost.id).delete();
   }
 
-  getFileUploads(numberItems): AngularFireList<FileUpload> {
-    return this.db.list(this.basePath, ref =>
-      ref.limitToLast(numberItems));
-  }
-
-  deleteFileUpload(fileUpload: FileUpload) {
-    this.deleteFileDatabase(fileUpload.key)
-      .then(() => {
-        this.deleteFileStorage(fileUpload.name);
-      })
-      .catch(error => console.log(error));
-  }
-
-  private deleteFileDatabase(key: string) {
-    return this.db.list(`${this.basePath}/`).remove(key);
-  }
-
-  private deleteFileStorage(name: string) {
-    const storageRef = firebase.storage().ref();
-    storageRef.child(`${this.basePath}/${name}`).delete();
-  }
+  // private deleteFileStorage(currentfileupload) {
+  //   const storageRef = firebase.storage().ref();
+  //   storageRef.child(`${this.basePath}/${name}`).delete();
+  // }
 }

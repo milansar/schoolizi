@@ -6,3 +6,7 @@ export interface Post {
   export interface PostID extends Post {
     id: string;
   }
+  
+export interface Image{
+  name:string;
+}
